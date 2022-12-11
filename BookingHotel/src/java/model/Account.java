@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author dell
@@ -15,12 +17,23 @@ public class Account {
     String password;
     String phone;
     String identityCart;
+    Date ceateAt;
 
-    @Override
-    public String toString() {
-        return "Account{" + "id=" + id + ", username=" + username + ", password=" + 
-                password + ", phone=" + phone + ", identityCart=" + identityCart + '}';
+    public Account(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
+
+    public Account(int id, String username, String password, String phone, String identityCart, Date ceateAt) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.identityCart = identityCart;
+        this.ceateAt = ceateAt;
+    }
+
 
     public Account(int id, String username, String password, String phone, String identityCart) {
         this.id = id;
@@ -28,6 +41,11 @@ public class Account {
         this.password = password;
         this.phone = phone;
         this.identityCart = identityCart;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", phone=" + phone + ", identityCart=" + identityCart + ", ceateAt=" + ceateAt + '}';
     }
 
     public int getId() {
@@ -56,6 +74,14 @@ public class Account {
 
     public String getPhone() {
         return phone;
+    }
+
+    public Date getCeateAt() {
+        return ceateAt;
+    }
+
+    public void setCeateAt(Date ceateAt) {
+        this.ceateAt = ceateAt;
     }
 
     public void setPhone(String phone) {

@@ -40,7 +40,7 @@
                             <div class="full">
                                 <div class="center-desk">
                                     <div class="logo">
-                                        <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                        <a href="home.jsp"><img src="images/logo.png" alt="#" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                             <a class="nav-link" href="#contact">Contact us</a>
                                         </li>
                                     </ul>
-                                    <div class="sign_btn"><a href="login">Sign in</a></div>
+                                    <div class="sign_btn"><a href="login">${account==null?'Sign in':'Sign out'}</a></div>
                                 </div>
                             </nav>
                         </div>

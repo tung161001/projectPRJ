@@ -1,8 +1,9 @@
+package controller;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
 
 import dao.AccountDAO;
 import java.io.IOException;
@@ -11,14 +12,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
- * @author Tùng
+ * @author thang
  */
-public class loginController extends HttpServlet {
+public class registerController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +36,10 @@ public class loginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet loginController</title>");
+            out.println("<title>Servlet registerController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet loginController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet registerController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +57,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     /**
@@ -73,15 +72,18 @@ public class loginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AccountDAO accountDAO = new AccountDAO();
-        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Account account = accountDAO.getByUsernamePassword(username, password);
-        if (account != null) {
-            session.setAttribute("account",account);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+        String phone = request.getParameter("phone");
+        String identityCard = request.getParameter("identityCard");
+        int checkCreate = accountDAO.create(username, password, phone, identityCard);
+        if (checkCreate == -1) {
+            request.setAttribute("error", "error internal please try again or come back later !");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        } else if (checkCreate == 0) {
+            request.setAttribute("error", "this account will be exist please create new account");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
-            request.setAttribute("error","login failed please login again ! ");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

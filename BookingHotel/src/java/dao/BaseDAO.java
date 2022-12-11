@@ -18,12 +18,11 @@ protected Connection connection;
         try {
             String user = "sa";
             String pass = "123";
-            String url = "jdbc:sqlserver://localhost\\MSSQLSERVER:1433;databaseName=BookingHotel";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=Booking_Hotel";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("error connection sql");
         }
     }
-
 }
