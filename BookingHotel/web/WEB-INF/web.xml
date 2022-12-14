@@ -12,6 +12,14 @@
         <servlet-name>registerController</servlet-name>
         <servlet-class>controller.registerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>bookingController</servlet-name>
+        <servlet-class>controller.bookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchRoomController</servlet-name>
+        <servlet-class>controller.searchRoomController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>registerController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookingController</servlet-name>
+        <url-pattern>/booking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchRoomController</servlet-name>
+        <url-pattern>/search-room</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

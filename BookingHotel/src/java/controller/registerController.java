@@ -78,12 +78,13 @@ public class registerController extends HttpServlet {
         String identityCard = request.getParameter("identityCard");
         int checkCreate = accountDAO.create(username, password, phone, identityCard);
         if (checkCreate == -1) {
-            request.setAttribute("error", "error internal please try again or come back later !");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.setAttribute("errorRegis", "error internal please try again or come back later !");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else if (checkCreate == 0) {
-            request.setAttribute("error", "this account will be exist please create new account");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.setAttribute("errorRegis", "this account will be exist please create new account");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
+            request.setAttribute("mess", "register success please login .");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
