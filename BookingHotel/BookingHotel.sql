@@ -122,7 +122,7 @@ go
 -- end query
 
 
-select * from account
+select * from booking
 
 
 

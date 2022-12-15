@@ -20,6 +20,10 @@
         <servlet-name>searchRoomController</servlet-name>
         <servlet-class>controller.searchRoomController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sortByPriceController</servlet-name>
+        <servlet-class>controller.sortByPriceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>searchRoomController</servlet-name>
         <url-pattern>/search-room</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sortByPriceController</servlet-name>
+        <url-pattern>/sortByPrice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -64,10 +64,30 @@ public class RoomDAO {
         }
         return list;
     }
+        public ArrayList<Room> sortByPrice() {
+        ArrayList<Room> list = new ArrayList<>();
+        try {
+            String sql = "select roomID , name ,qualityID,bed , price,area, image,description from room order by price";
+            BaseDAO baseDAO = new BaseDAO();
+            Connection connection = baseDAO.connection;
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(
+                        new Room(rs.getInt("roomID"), rs.getString("name"), rs.getInt("qualityID"),
+                                 rs.getInt("bed"), rs.getInt("price"),rs.getInt("area"), rs.getString("image"), rs.getString("description"))
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("error getByRoom: BookingDAO " + e);
+        }
+        return list;
+    }
+    
     
     public static void main(String[] args) {
         RoomDAO r = new RoomDAO();
-        System.out.println(r.getAll());
+        System.out.println(r.sortByPrice());
     }
     
 }

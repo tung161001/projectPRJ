@@ -83,6 +83,7 @@
                     </div>
                     <div class="control-group col-md-3">
                         <button class="btn btn-block">Search</button>
+                        <a class="btn btn-block" href="sortByPrice">Sort by price</a>
                     </div>
                 </form>
             </div>
